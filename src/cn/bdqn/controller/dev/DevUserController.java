@@ -11,6 +11,9 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+/**
+ * 开发者用户控制器类
+ */
 @Controller
 @RequestMapping(value = "/dev/user")
 public class DevUserController {
