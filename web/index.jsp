@@ -10,7 +10,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>后台管理系统</title>
-
     <!-- Bootstrap -->
     <link href="${pageContext.request.contextPath }/statics/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -19,7 +18,6 @@
     <link href="${pageContext.request.contextPath }/statics/css/nprogress.css" rel="stylesheet">
     <!-- Animate.css -->
     <link href="https://colorlib.com/polygon/gentelella/css/animate.min.css" rel="stylesheet">
-
     <!-- Custom Theme Style -->
     <link href="${pageContext.request.contextPath }/statics/css/custom.min.css" rel="stylesheet">
   </head>
@@ -30,6 +28,7 @@
       <div>
       <a href="/backend/user/login.html" class="btn btn-link">后台管理系统 入口</a>
       </div>
+      
       <div>
       <a href="/dev/user/login.html" class="btn btn-link">开发者平台 入口</a>
       </div>
