@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
 public class SysInterceptor extends HandlerInterceptorAdapter {
 	private Logger logger = Logger.getLogger(SysInterceptor.class);
 	
@@ -29,6 +28,5 @@ public class SysInterceptor extends HandlerInterceptorAdapter {
 			response.sendRedirect(request.getContextPath()+"/403.jsp");
 			return false;
 		}
-		
 	}
 }

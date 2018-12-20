@@ -6,7 +6,6 @@
 
     <settings>
         <setting name="logImpl" value="LOG4J"/>
-        <setting name="lazyLoadingEnabled " value="true"/>
     </settings>
     <typeAliases>
         <package name="cn.bdqn.pojo"/>
