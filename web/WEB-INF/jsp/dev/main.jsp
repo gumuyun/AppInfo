@@ -1,22 +1,12 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 2018-12-17
-  Time: 17:26
-  To change this template use File | Settings | File Templates.
---%>
-
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8" contentType="text/html;charset=UTF-8" %>
-<%
-    String path = request.getContextPath();
-    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
-%>
-<html>
-<head>
-    <base href="<%=basePath%>">
-    <title>Title</title>
-</head>
-<body>
-    开发者主页
-</body>
-</html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@include file="common/header.jsp"%>
+<div class="page-title">
+	<div class="title_left">
+		<h3>
+			欢迎你：${devUserSession.devName }<strong> | 角色：开发者账户</strong>
+		</h3>
+	</div>
+</div>
+<div class="clearfix"></div>
+<%@include file="common/footer.jsp"%>

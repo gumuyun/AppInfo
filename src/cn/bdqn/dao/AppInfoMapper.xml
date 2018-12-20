@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bdqn.dao.AppInfoMapper">
+    <select id="getPageByCondition" resultType="appInfo">
+        select appInfo.*,av.`versionNo` from (
+        select ai.*,ddp.`valueName` as platformName ,ac1.`categoryName` categoryLevel1Name,
+            ac2.`categoryName` categoryLevel2Name,ac3.`categoryName` categoryLevel3Name,
+            dds.`valueName` statusName
+        from `app_info` ai,`data_dictionary` ddp ,`app_category` ac1 ,`app_category` ac2 ,
+        `app_category` ac3,`data_dictionary` dds
+        where ai.`platformId`=ddp.`valueId`
+        and ddp.`typeCode`='APP_FLATFORM'
+        and ai.`categoryLevel1`=ac1.`id`
+        and ai.`categoryLevel2`=ac2.`id`
+        AND ai.`categoryLevel3`=ac3.`id`
+        and ai.`status`=dds.`valueId`
+        and dds.`typeCode`='APP_STATUS'
+        <if test="status!=null and status!=0">
+            and ai.status=#{status}
+        </if>
+        <if test="platformId!=null and platformId!=0">
+            and ai.platformId=#{platformId}
+        </if>
+        <if test="categoryLevel1!=null and categoryLevel1!=0">
+            and ai.categoryLevel1=#{categoryLevel1}
+        </if>
+        <if test="categoryLevel2!=null and categoryLevel2!=0">
+            and ai.categoryLevel2=#{categoryLevel2}
+        </if>
+        <if test="categoryLevel3!=null and categoryLevel3!=0">
+            and ai.categoryLevel3=#{categoryLevel3}
+        </if>
+        <if test="softwareName!=null and softwareName!=''">
+            and ai.softwareName like concat('%',#{softwareName},'%')
+        </if>
+        order by ai.creationDate desc
+        limit #{startRow},#{pageSize}
+        ) appInfo left join `app_version` av on appInfo.versionId=av.id
+
+    </select>
+    <select id="count" resultType="int">
+        select count(1) from `app_info` ai
+        <trim prefix="where" prefixOverrides="and|or">
+            <if test="status!=null and status!=0">
+                and ai.status=#{status}
+            </if>
+            <if test="platformId!=null and platformId!=0">
+                and ai.platformId=#{platformId}
+            </if>
+            <if test="categoryLevel1!=null and categoryLevel1!=0">
+                and ai.categoryLevel1=#{categoryLevel1}
+            </if>
+            <if test="categoryLevel2!=null and categoryLevel2!=0">
+                and ai.categoryLevel2=#{categoryLevel2}
+            </if>
+            <if test="categoryLevel3!=null and categoryLevel3!=0">
+                and ai.categoryLevel3=#{categoryLevel3}
+            </if>
+            <if test="softwareName!=null and softwareName!=''">
+                and ai.softwareName like concat('%',#{softwareName},'%')
+            </if>
+        </trim>
+
+    </select>
+
+</mapper>
